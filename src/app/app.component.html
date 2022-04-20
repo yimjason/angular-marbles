@@ -1,0 +1,29 @@
+<h1>Squid Game - Marbles</h1>
+<p>player marbles: {{ playerMarbles }}</p>
+<p>partner marbles: {{ partnerMarbles }}</p>
+<ng-container *ngIf="!gameover">
+  <p>
+    Your partner grabbed some marbles from their bag. <br />How many marbles do
+    you think your partner is holding?
+  </p>
+  <div>
+    <button (click)="gamble('odd')">Odd Number</button> or
+    <button (click)="gamble('even')">Even Number</button>
+  </div>
+  <br />
+  <div>
+    <label> Your wager: </label>
+    <input
+      type="number"
+      [value]="wager"
+      min="1"
+      [max]="playerMarbles"
+      (change)="updateWager($event)"
+    />
+    marble(s)
+  </div>
+</ng-container>
+<ng-container *ngIf="gameover">
+  <button (click)="reset()">Reset</button>
+</ng-container>
+<p>{{ message }}</p>
